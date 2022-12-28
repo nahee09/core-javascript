@@ -5,4 +5,4 @@
 - [x] Code Structure
 - [x] Variables
 - [x] Strict Mode
-- [ ] Global This
+- [x] Global This

@@ -12,13 +12,13 @@ let calc;
 // - 구매 제품 가격의 총 합: 변
 let buySum;
 // - 1년 기준 일(day)자 수: 상
-const dayYear;
+const dayYear = 365;
 // - 구매 결제 여부: 변
 let buyYN;
 // - 구매 결제 내역: 변
 let buyList;
 // - 브랜드 접두사: 상
-const brandFirstName; 
+const brandFirstName = "Hee"; 
 // - 오늘의 운세: 변
 let todayLucky;
 // - 상품 정보: 변

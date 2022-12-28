@@ -3,5 +3,6 @@
 ## JS 코어에 대해 학습합니다~
 
 - [x] Code Structure
-- [ ] Variables
-- [ ] Strict Mode
+- [x] Variables
+- [x] Strict Mode
+- [ ] Global This

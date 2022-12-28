@@ -39,10 +39,24 @@ console.log(typeof Symbol('hee'));
 
 
 // Object
+/* key value */
+// const user = new Object();
+const user = { //객체 리터럴
+  name: 'nahee', //name, age는 property
+  age: 26
+}
 
 // Array
+// let list = new Array()
+//collection 
+let list = [1, 2, 3, 4, 5] //배열 리터럴
 
 // function
+function sum(a, b){ //parameter(매개변수)
+  return a + b;
+}
+console.log(sum(1, 4)); //argument(인자)
+
 
 // this
 

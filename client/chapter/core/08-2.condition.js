@@ -14,11 +14,11 @@ let TheMaster = "TheMaster";
 
 if(userInput.toLowerCase() == "Admin".toLowerCase()){
   let pw = prompt("비밀번호를 입력하세요.");
-  if(pw == TheMaster){
+  if(pw.toLowerCase() == TheMaster.toLowerCase()){
     alert("환영합니다!");
   }else if(pw == '' || pw == null){
     alert("취소되었습니다.");
-  }else if(pw != TheMaster){
+  }else{
     alert("인증에 실패하였습니다.");
   }
 }else{

@@ -8,3 +8,4 @@
 - [x] Global This
 - [x] Data Types
 - [x] Type Conversion
+- [x] Operations

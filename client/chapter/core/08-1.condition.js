@@ -17,6 +17,7 @@ if(userInput > 0){
 // userInput > 0? alert(1) :
 //   userInput < 0? alert(-1) : alert(0);
 
+
 // 그 영화 봤니?
 //     ↓
 // Yes | No
@@ -25,14 +26,26 @@ if(userInput > 0){
 //       Yes | No
 
 // 영화 봤니?
-let didWatchMovie;
+let didWatchMovie = prompt("그 영화 봤니?(yes or no)");
 
 // 영화 볼거니?
 let goingToWatchMovie;
 
 
 // if 문(statement)
+if(didWatchMovie == 'yes'){
+  alert("영화를 봤구나!");
+}else{
+  alert("영화를 안 봤구나!");
+  goingToWatchMovie = prompt("그 영화 볼거니?(yes or no)");
 
+  if(goingToWatchMovie =='yes'){
+    alert("영화 볼 거구나!");
+  }
+  else{
+    alert("영화를 안 볼 거구나!");
+  }
+}
 // else 절(caluse)
 
 // else if 복수 조건 처리

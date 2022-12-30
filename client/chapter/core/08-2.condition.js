@@ -25,6 +25,26 @@ if(userInput.toLowerCase() == "Admin".toLowerCase()){
   alert("bye.");
 }
 
+/* 범쌤 코드 */
+// let userName = prompt('사용자 아이디를 입력해주세요.','');
+
+// // console.log(userName);
+// if(userName?.toLowerCase() === 'admin'){
+
+//   let pw = prompt('비밀번호를 입력해 주세요.','');
+
+//   if(pw?.toLowerCase() === 'themaster'){
+//     console.log('환영합니다.');
+//   }else{
+//     console.log('취소되었습니다.');
+//   }
+// }else if(userName.replace(/\s*/g,'') === '' || userName === null){
+//   console.log('취소했습니다.');
+// }else{
+//   console.log('인증되지 않은 사용자 입니다.');
+// }
+
+
 
 
 let aa = 10;

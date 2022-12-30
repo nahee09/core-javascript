@@ -22,7 +22,7 @@ if(userInput.toLowerCase() == "Admin".toLowerCase()){
     alert("인증에 실패하였습니다.");
   }
 }else{
-  alert("가세요.");
+  alert("bye.");
 }
 
 

@@ -51,7 +51,7 @@ const frontEndDev = [
 let copyArray = frontEndDev.slice(); 
 
 while(copyArray.length){
-  console.log(copyArray.pop());
+  console.log(copyArray.pop());//pop은 값을 반환 후 제거 
 }
 
 

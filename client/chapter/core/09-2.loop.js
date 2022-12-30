@@ -26,15 +26,26 @@ do{
 // - 위 do ~ while 문을 순방향으로 순환되도록 설정
 
 
+function next(node){
+  do{
+    node = node.nextSibling;
+  }while(node.nodeType !== document.ELEMENT_NODE)
 
+  return node;
+}
 
 // let first = document.querySelector('.first');
 // console.log(first.nextSibling);
+function prev(node){
+  do{
+    node = node.previousSibling;
+  }while(node.nodeType !== document.ELEMENT_NODE)
+
+  return node;
+}
 
 let first = document.querySelector('.first');
+let second = document.querySelector('.second');
 
-do{
-  first = first.nextSibling;
-}while(first.nodeType !== document.ELEMENT_NODE)
-
-console.log(first);
+console.log(next(first));
+console.log(prev(second));

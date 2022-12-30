@@ -2,8 +2,17 @@
 /* Nullish Coalescing Operator                                            */
 /* ---------------------------------------------------------------------- */
 
-
 const WIDTH = '10px';
+const INIT = 0;
+const boolean = false;
+const button = document.querySelector('.button');
+
+if(button){
+  button.style.height = `${INIT ?? parseInt(WIDTH)}px`
+}
+console.log('button: '+ button);
+
+// const WIDTH = '10px';
 
 console.log(null || WIDTH); //10px
 console.log(null ?? WIDTH); //10px

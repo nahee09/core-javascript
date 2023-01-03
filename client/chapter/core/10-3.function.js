@@ -45,6 +45,30 @@ const arrowFunction = () => {
 normalFunction();
 arrowFunction();
 
+const user = {
+  name:'tiger',
+  age:32,
+  address:'서울시 중랑구 면목동',
+  grades:[80,90,100],
+  totalGrades: function (){
+    function foo(){
+      console.log('foo : ', this);
+    }
+
+    const bar = () =>{
+      console.log('bar : ', this);
+    }
+    
+    // foo();
+    foo.call(user) // user
+    bar() // user object
+
+  }
+}
+
+
+console.log(user.totalGrades());
+
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
 
 // pow(numeric: number, powerCount: number): number;

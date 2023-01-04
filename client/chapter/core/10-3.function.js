@@ -72,7 +72,31 @@ console.log(user.totalGrades());
 /* 다음 함수를 작성해봅니다. -------------------------------------------------- */
 
 // pow(numeric: number, powerCount: number): number;
-let pow; 
+let pow = (numeric, powerCount) => {
+  let result = 1;
+  for(let i = 0; i < powerCount; i++){
+    result *= numeric;
+  }
+  return result; 
+}; 
+// console.log(pow(2,10));
+
+//reduce 함수 사용
+let powExpresstion = (numeric, powerCount) => Array(powerCount).fill(null).reduce(acc => acc * numeric, 1); 
+//1은 acc의 초깃값 설정해둔 것.(객체로도 설정 가능) (설정 안 하면 기본값 0)
+
+
+
 
 // repeat(text: string, repeatCount: number): string;
-let repeat; //특정 문자를 반복 횟수만큼 반복시켜주는 함수를 정의해보세요~ 
+let repeat = (text, repeatCount) => {
+  let result = '';
+  for(let i = 0; i < repeatCount; i++){
+    result += text;
+  }
+  return result;
+}; //특정 문자를 반복 횟수만큼 반복시켜주는 함수를 정의해보세요~ 
+// console.log(repeat("안뇽", 3));
+
+//reduce 함수 사용
+let repeatExpresstion = (text, repeatCount) => Array(repeatCount).fill(null).reduce(acc => acc + text, ''); 

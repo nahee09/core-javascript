@@ -105,8 +105,8 @@ function getPropertiesList(obj){
 // 프로퍼티 제거 or 삭제 
 //제거는 값을 비움, 삭제는 아예 없애는 것
 function removeProperty(obj, prop){ //제거
-  // obj.prop = null; //.은 안되는 구나.
-  obj[prop] = null;
+  // obj.prop = null; //.은 안되는 구나. 
+  obj[prop] = null;// 대괄호 표기법만 모든 표현식의 평과 결과를 property 키로 사용할 수 있대.
 }
 
 function deleteProperty(obj, prop){ //삭제

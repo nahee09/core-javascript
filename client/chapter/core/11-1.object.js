@@ -110,7 +110,7 @@ function removeProperty(obj, prop){ //제거
 }
 
 function deleteProperty(obj, prop){ //삭제
-  // delete obj.prop;
+  // delete obj.prop; //.은 안되는 구나.
   delete obj[prop];
 }
 

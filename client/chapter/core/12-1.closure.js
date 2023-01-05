@@ -8,15 +8,24 @@
 //   즉, 클로저에 정의된 함수는 그것이 작성된 환경을 '기억'합니다.
 
 
+// function first(){
+//   let x = 10;
+
+//   function second(){
+//     let y = 30; 
+//     return x + y; //이게 잘 실행 될까? yes. x가 함수 내에 없으면 매개변수에서 찾고 또 없으면 위로 올라감.
+//   }
+
+//   return second;
+// }
+
 function first(){
   let x = 10;
 
-  function second(){
+ return function(){
     let y = 30; 
     return x + y; //이게 잘 실행 될까? yes. x가 함수 내에 없으면 매개변수에서 찾고 또 없으면 위로 올라감.
   }
-
-  return second;
 }
 
 first(); //second함수 자체 
@@ -38,14 +47,22 @@ function number(){
 count = 10;
 */
 
+// function number(){
+//   let count = 0;
+
+//   function inner(){
+//     return ++count; 
+//   }
+
+//   return inner;
+// }
+
 function number(){
   let count = 0;
 
-  function inner(){
+  return function(){ //여기 함수 이름은 중요하지 않기 때문에 없애버림 
     return ++count; 
   }
-
-  return inner;
 }
 
 const counter = number();

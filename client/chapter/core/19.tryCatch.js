@@ -32,12 +32,11 @@ try{
   if(!user.value){
     throw new ReferenceError('해당 키 값은 존재하지 않습니다.');
   }
-  // console.log(user.value);//undefined 
-  //근데 얘는 try-catch만 써도 왜 에러를 말 안 해주지. 왜 throw new를 꼭 써줘야 하는 걸까.
+  // console.log(user.value);//undefined //근데 얘는 왜 is not defined라는 에러를 말 안 해주지.(정의되지 않은 변수에 접근하려고 하면 에러가 뜨는데.)
 }catch(err){
-  console.log(err.name);
-  console.log('JSON Error: '+ err.message);
-  console.log(err.stack);
+  console.log(err.name); //ReferenceError
+  console.log('JSON Error: '+ err.message); //JSON Error: 해당 키 값은 존재하지 않습니다.
+  console.log(err.stack); //ReferenceError: 해당 키 값은 존재하지 않습니다.
 }finally{
   console.log('일단 완료');
 }

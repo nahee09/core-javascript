@@ -12,12 +12,12 @@ function clickSubmitHandler(e){
   //validation 
   //아무것도 입력하지 않았을 때
   if(!name){
-    showAlert('.alert-error', '이름을 입력해주세요!', 2000);
+    showAlert(alertError, '이름을 입력해주세요!', 2000);
     return;
   }
   //숫자를 입력했을 때(숫자+문자는 허용)
   if(isNumericString(name)){
-    showAlert(alertError, alertError.textContent, 2000);
+    showAlert(alertError, '제대로 된 이름을 입력하세요!', 2000);
     return;
   }
   

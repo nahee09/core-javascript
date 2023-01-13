@@ -1,5 +1,6 @@
 import { addClass, removeClass } from './css.js';
 import { getNode } from './getNode.js';
+// import { addClass, removeClass, getNode } from './index.js'; //이렇게 경로를 ./index.js로 해도 작동하긴 하는데 괜찮은 거겠지? 
 
 export function showAlert(node, text = '에러입니다.', timeout = 1500){
   if(typeof node === 'string') node = getNode(node);

@@ -47,7 +47,7 @@ function setCss(node, prop, value){
   node.style[prop] = value;
 }
 
-function css(node, prop, value){
+export function css(node, prop, value){
   if(!value) return getCss(node, prop);
   else setCss(node, prop, value);
 }

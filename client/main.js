@@ -7,6 +7,10 @@
 // 4. 두 수 더해주기 
 // 5. 화면에 출력하기
 
+import {
+  getNode, css, addClass, removeClass, refError, typeError
+} from "./lib/index.js";
+
 /* 내가 한 코드 */
 // const firstNumber = getNode('#firstNumber');
 // const secondNumber = getNode('#secondNumber');

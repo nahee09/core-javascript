@@ -26,11 +26,22 @@ import {
 // 4. visible 활성 유틸 함수 만들기
 // 5. toggleState 유틸 함수 만들기 
 
+// [ 레코드 템플릿 뿌리기 ]
+// 1. renderRecordListItem 함수 만들기
+// 2. HTML 템플릿 만들기
+// 3. 템플릿 뿌리기 
+
+// [ 초기화 시키기 ]
+// 1. clearContent 로 정보 지우기
+// 2. total, count 초기화 
+// 3. 스크롤 밑으로 보내기 
+// 4. 메모이제이션 패턴 
+
+
 //유사배열(nodeList)로 받아와서 배열의 구조 분해 할당
 const [rollingDiceButton, recordButton, resetButton] = getNodes('.buttonGroup > button');
 const recordListWrapper = getNode('.recordListWrapper');
-
-
+memo('@tbody',() => getNode('.recordListWrapper tbody')); 
 
 /* -------------------------------------------------------------------------- */
 /*                                   render                                   */
@@ -39,8 +50,8 @@ let index = 0;
 let sumResult = 0; 
 
 function renderRecordListItem(){
-  const cube = getNode('#cube');
-  let diceValue = attr(cube, 'data-dice');
+  // const cube = getNode('#cube');
+  let diceValue = attr(memo('cube'), 'data-dice');
   sumResult += +diceValue;
   let template = /*html*/`
     <tr></tr>
@@ -48,7 +59,7 @@ function renderRecordListItem(){
       <td>${diceValue}</td>
       <td>${sumResult}</td>
     </tr>`;
-  insertLast('.recordListWrapper tbody', template);
+  insertLast(memo('@tbody'), template);
 
   //값이 쌓일 때마다 밑 지점을 나타내기(스크롤 길이만큼 찍어준다.)
   recordListWrapper.scrollTop = recordListWrapper.scrollHeight;
@@ -89,7 +100,7 @@ function handleReset(){
   index = 0; 
   sumResult = 0; 
   invisibleElement(recordListWrapper);
-  clearContents('.recordListWrapper tbody');
+  clearContents(memo('@tbody'));
 }
 
 rollingDiceButton.addEventListener('click', handlerRollingDice);

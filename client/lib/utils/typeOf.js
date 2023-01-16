@@ -4,6 +4,9 @@ export function isNumericString(data){
   return !isNaN(data)
 }
 
+export function isElement(node){
+  return node.nodeTye !== document.ELEMENT_NODE;
+}
 
 
 

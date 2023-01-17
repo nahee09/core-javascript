@@ -6,6 +6,7 @@
 4:complete //완료
  */
 
+
 // GET통신 
 // function xhrData(method, url){
 //   const xhr = new XMLHttpRequest();
@@ -53,7 +54,7 @@
 //   xhr.send(JSON.stringify(body)); //문자화
 // }
 
-function xhrData({//기본값 설정
+export function xhrData({//기본값 설정
   method = 'GET', 
   url = '', 
   body = null,  
@@ -62,8 +63,9 @@ function xhrData({//기본값 설정
   headers = {
     'Content-Type': 'application/json', //이건 적어줘야 함
     'Access-Control-Allow-Origin' : '*' //이걸 적어놔도 우리가 해결할 수 있는 문제가 아님
-  }
-}){
+  }, 
+  // {}={}
+}={}){
   const xhr = new XMLHttpRequest();
   //역시 객체 구조 분해 할당,
   // const {method, url, body} = options;// 근데 위에 파라미터에서 바로 구조분해할당. 
@@ -132,17 +134,110 @@ function xhrData({//기본값 설정
 //   url: 'https://jsonplaceholder.typicode.com/users'
 // }));//undefined 나옴
 
-xhrData({
-  url: 'https://jsonplaceholder.typicode.com/users', 
-  onSuccess: (result)=>{
+// xhrData({
+//   url: 'https://jsonplaceholder.typicode.com/users', 
+//   onSuccess: (result)=>{
+//     console.log(result);
+//   }, 
+//   onFail: (err)=>{
+//     console.error(err);
+//   }
+// });
+
+//xhrData 함수(객체) 안에 get이라는 함수 정의(메서드) (아무래도 함수는 객체니까..추가할 수 있나봐.)
+xhrData.get = (url, onSuccess, onFail) => {
+  xhrData({
+    url, //url:url은 왼쪽처럼 단축표기로 쓸 수 있음.
+    onSuccess, 
+    onFail 
+  })
+};
+
+//xhrData 함수(객체) 안에 post라는 함수 정의(메서드)
+xhrData.post = (url, body, onSuccess, onFail) => {
+  xhrData({
+    method: 'POST',
+    url, 
+    onSuccess, 
+    onFail, 
+    body
+  })
+};
+
+//xhrData 함수(객체) 안에 delete라는 함수 정의(메서드)
+xhrData.delete = (url, onSuccess, onFail) => {
+  xhrData({
+    method: 'DELETE', 
+    url, 
+    onSuccess, 
+    onFail
+  })
+};
+
+//xhrData 함수(객체) 안에 put라는 함수 정의(메서드)
+xhrData.put = (url, body, onSuccess, onFail) => {
+  xhrData({
+    method: 'PUT',
+    url, 
+    onSuccess, 
+    onFail, 
+    body
+  })
+};
+
+/* -------------------------------------------------------------------------- */
+/*                                위에서 만든 메서드 사용                               */
+/* -------------------------------------------------------------------------- */
+/*
+//get 메서드 사용(실행)
+xhrData.get(
+  'https://jsonplaceholder.typicode.com/users',
+  (result) => {
     console.log(result);
   }, 
-  onFail: (err)=>{
-    console.error(err);
+  (err) => {
+    console.log(err);
   }
-});
+);
 
+//post 메서드 사용(실행)
+xhrData.post(
+  'https://jsonplaceholder.typicode.com/users',
+  {
+    "name": "Kimnahee",
+    "username": "nahee",
+    "email": "nnn@xxxx.com"
+  }, 
+  (result) => {
+    console.log(result);
+  }, 
+  (err) => {
+    console.log(err);
+  }
+);
 
+//delete 메서드 사용(실행)
+xhrData.delete(
+  'https://jsonplaceholder.typicode.com/users/11', 
+  (result) => {
+    console.log(result);
+  }, 
+  (err) => {
+    console.log(err);
+  }
+);
 
-
-
+//put 메서드 사용(실행)
+xhrData.put(
+  'https://jsonplaceholder.typicode.com/users/1', 
+  {
+    'name': 'kimnahee'
+  },
+  (result) => {
+    console.log(result);
+  }, 
+  (err) => {
+    console.log(err);
+  }
+);
+*/

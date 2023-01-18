@@ -63,5 +63,3 @@ nahee.delete = (url, options) => {
 
 // console.log(await nahee());
 
-let response = await nahee.get('https://jsonplaceholder.typicode.com/users');
-console.log(response);

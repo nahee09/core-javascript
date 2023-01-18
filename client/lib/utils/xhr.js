@@ -268,7 +268,7 @@ export function xhrPromise(options = {}){
   // config = {...config, ...options};
   //이번엔 Object.assign을 사용해서 객체 합성 시켜줘 봄
   //즉 {...config, ...options}랑 Object.assign({}, defaultOptions, options) 하는 일이 같다.
-  const {method, url, body, header} = Object.assign({}, defaultOptions, options);
+  const {method, url, body, headers} = Object.assign({}, defaultOptions, options);
 
   if(!url) typeError('서버와 통신할 url 인자는 반드시 필요합니다.')
   xhr.open(method, url);
@@ -282,10 +282,10 @@ export function xhrPromise(options = {}){
       if(status >= 200 && status < 400){
         if(readyState === 4){
           resolve(JSON.parse(response));
-        }else{
+        }
+      }else{
           reject('에러라구요~ 운동해야하는데~');
         }
-      }
     })
   })
 }

@@ -6,6 +6,8 @@
 4:complete //완료
  */
 
+import { typeError } from '../error/typeError.js';
+
 
 // GET통신 
 // function xhrData(method, url){
@@ -241,3 +243,99 @@ xhrData.put(
   }
 );
 */
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                                   promise                                  */
+/* -------------------------------------------------------------------------- */
+const defaultOptions = {
+  url: '', 
+  method: 'GET', 
+  headers: {
+    'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*'
+  }, 
+  body: null
+}
+
+
+export function xhrPromise(options = {}){
+  const xhr = new XMLHttpRequest;
+
+  // 아래 두 줄은 아까 delay.js에서 했던 것
+  // let config = {...defaultOptions}; //참조가 아닌 복사(얕은)
+  // config = {...config, ...options};
+  //이번엔 Object.assign을 사용해서 객체 합성 시켜줘 봄
+  //즉 {...config, ...options}랑 Object.assign({}, defaultOptions, options) 하는 일이 같다.
+  const {method, url, body, header} = Object.assign({}, defaultOptions, options);
+
+  if(!url) typeError('서버와 통신할 url 인자는 반드시 필요합니다.')
+  xhr.open(method, url);
+
+  xhr.send(body ? JSON.stringify(body) : null);//return으로 종료되기 전에 써줘야 함. 
+
+  return new Promise((resolve, reject)=>{
+    xhr.addEventListener('readystatechange', ()=>{
+      const {status, readyState, response} = xhr; 
+
+      if(status >= 200 && status < 400){
+        if(readyState === 4){
+          resolve(JSON.parse(response));
+        }else{
+          reject('에러라구요~ 운동해야하는데~');
+        }
+      }
+    })
+  })
+}
+
+// xhrPromise({
+//   url:'https://jsonplaceholder.typicode.com/users'
+// })
+// .then((res) => {
+//   console.log(res);
+// })
+// .catch((err)=>{
+//   console.log(err);
+// })
+
+//get, post, put, delete 메서드 추가
+xhrPromise.get = (url) => {
+  return xhrPromise({
+    url
+  })
+}
+
+xhrPromise.post = (url, body) =>{
+  return xhrPromise({
+    url, 
+    body, 
+    method: 'POST'
+  })
+}
+
+xhrPromise.put = (url, body) =>{
+  return xhrPromise({
+    url, 
+    body, 
+    method: 'PUT'
+  })
+}
+
+xhrPromise.delete = (url) =>{
+  return xhrPromise({
+    url,  
+    method: 'DELETE'
+  })
+}
+
+//get메서드 사용해보기
+// xhrPromise
+// .get('https://jsonplaceholder.typicode.com/users')
+// .then((res)=>{
+//   console.log(res);
+// })
+// .catch((err)=>{
+//   console.log(err);
+// })

@@ -90,3 +90,14 @@ async function delayA(){
 let result = await delayA();
 
 // console.log(result);
+
+async function ramyeon(){
+  await delayP(3000)
+  console.log('물 넣기');
+  console.log('스프 넣기');
+  console.log('면 넣기');
+  console.log('계란 넣기');
+  console.log('파 넣기');
+}
+
+ramyeon()

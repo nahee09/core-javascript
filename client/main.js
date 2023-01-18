@@ -1,4 +1,10 @@
-import { xhrData, insertLast, xhrPromise} from "./lib/index.js";
+import { 
+  xhrData, 
+  insertLast, 
+  xhrPromise, 
+  nahee, 
+  delayP
+}from "./lib/index.js";
 // import { } from "./lib/index.js";
 
 // xhrData.get(
@@ -21,3 +27,17 @@ import { xhrData, insertLast, xhrPromise} from "./lib/index.js";
 // .catch((err)=>{
 //   console.log(err);
 // })
+
+//nahee.js의 get 메서드 써보기 
+async function render(){
+
+  await delayP(2000);
+  let response = await nahee.get('https://jsonplaceholder.typicode.com/users')
+
+
+
+  console.log(response.data);
+}
+
+
+render()

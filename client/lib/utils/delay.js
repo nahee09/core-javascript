@@ -13,15 +13,16 @@ function delay(callback, timeout = 500){
   setTimeout(callback, timeout);
 }
 
-delay(()=>{
-  first.style.top = '-100px';
-  delay(()=>{
-    first.style.transform = 'rotate(360deg)';
-    delay(()=>{
-      first.style.top = '0px';
-    })
-  })
-})
+// 콜백 지옥
+// delay(()=>{
+//   first.style.top = '-100px';
+//   delay(()=>{
+//     first.style.transform = 'rotate(360deg)';
+//     delay(()=>{
+//       first.style.top = '0px';
+//     })
+//   })
+// })
 
 /* -------------------------------------------------------------------------- */
 /*                                   Promise                                  */
@@ -100,4 +101,4 @@ async function ramyeon(){
   console.log('파 넣기');
 }
 
-ramyeon()
+// ramyeon()

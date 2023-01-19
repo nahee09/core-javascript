@@ -69,7 +69,7 @@ async function rendingUserList(){
     $('.loadingSpinner').remove();
 
     // let response = await nahee.get('https://jsonplaceholder.typicode.com/users/1');
-    let response = await nahee.get('https://jsonplaceholder.typicode.com/users');
+    let response = await nahee.get('http://localhost:3000/users');
     let userData = response.data;
 
     userData.forEach((data) =>{
@@ -114,7 +114,11 @@ function handler(e){
   //ex) 'user-1'여기서 숫자만 남게 하려고 5인덱스부터 남겨주기
   let id = attr(article, 'data-index').slice(5);
 
-  nahee.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+  nahee.delete(`http://localhost:3000/users/${id}`).then(()=>{
+    userCardContainer.innerHTML = ''; 
+    rendingUserList();
+
+  });
 }
 
 userCardContainer.addEventListener('click', handler);

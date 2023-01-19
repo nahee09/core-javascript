@@ -3,11 +3,14 @@
 import { 
   // createUserCard,
   nahee, 
-  getNode, 
-  renderUserCard,
+  getNode as $, 
+  getNodes,
   changeColor,
+  renderUserCard,
   delayP, 
-  renderSpinner
+  renderSpinner,
+  renderEmptyCard,
+  attr
 }from "./lib/index.js";
 // import { } from "./lib/index.js";
 
@@ -52,7 +55,8 @@ import {
 //유저 카드 생성
 //생성된 카드로 랜더링
 
-const userCardContainer = getNode('.user-card-inner');
+const userCardContainer = $('.user-card-inner');
+
 
 async function rendingUserList(){
   //로딩 보여주기
@@ -62,7 +66,7 @@ async function rendingUserList(){
     await delayP(2000); 
 
     //로딩 그만 보여주기
-    getNode('.loadingSpinner').remove();
+    $('.loadingSpinner').remove();
 
     // let response = await nahee.get('https://jsonplaceholder.typicode.com/users/1');
     let response = await nahee.get('https://jsonplaceholder.typicode.com/users');
@@ -90,9 +94,27 @@ async function rendingUserList(){
     opacity:1
   });
   }catch(err){
+    renderEmptyCard(userCardContainer);
     console.log(err);
   }
 }
 
 rendingUserList();
 
+
+
+function handler(e){
+  //누른 대상의 가까운 'button'을 찾는다. 
+  let deleteButton = e.target.closest('button');
+  let article = e.target.closest('article');
+
+  //null로 나오는 곳은 막기 
+  if(!deleteButton || !article) return; 
+
+  //ex) 'user-1'여기서 숫자만 남게 하려고 5인덱스부터 남겨주기
+  let id = attr(article, 'data-index').slice(5);
+
+  nahee.delete(`https://jsonplaceholder.typicode.com/users/${id}`);
+}
+
+userCardContainer.addEventListener('click', handler);
